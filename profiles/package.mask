@@ -1,0 +1,2 @@
+# Ebuild experimental/incomplete
+>=mail-mta/citadel-9.01
