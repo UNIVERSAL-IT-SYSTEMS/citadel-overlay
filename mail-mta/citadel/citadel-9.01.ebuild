@@ -13,7 +13,7 @@ SRC_URI="http://easyinstall.citadel.org/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gc ldap pam pie ssl"
+IUSE="gc ldap pam pie postfix ssl"
 
 DB_SLOT=4.5
 
@@ -67,4 +67,8 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install-new
+
+	if use postfix ; then
+		rm -v "${D}"/usr/sbin/sendmail || die
+	fi
 }
